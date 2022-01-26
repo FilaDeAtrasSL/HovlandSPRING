@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 ene 2022 10:11:49 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="Proveedor" table="proveedor" catalog="hovland_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="20" />
+        </property>
+        <property name="localidad" type="string">
+            <column name="localidad" length="20" />
+        </property>
+        <set name="drogas" table="droga" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="proveedor" />
+            </key>
+            <one-to-many class="Droga" />
+        </set>
+        <set name="pedidos" table="pedido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_prov" />
+            </key>
+            <one-to-many class="Pedido" />
+        </set>
+        <set name="drogas_1" table="droga_has_proveedor" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="proveedor_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="Droga">
+                <column name="droga_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
