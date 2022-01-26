@@ -18,28 +18,33 @@ USE `hovland_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `proveedor`
+-- Table structure for table `droga`
 --
 
-DROP TABLE IF EXISTS `proveedor`;
+DROP TABLE IF EXISTS `droga`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `proveedor` (
+CREATE TABLE `droga` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(20) DEFAULT NULL,
-  `localidad` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `psicoactivo` varchar(30) DEFAULT NULL,
+  `legalidad` tinyint(1) DEFAULT NULL,
+  `precioGramo` float DEFAULT NULL,
+  `proveedor` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `proveedor` (`proveedor`),
+  CONSTRAINT `droga_ibfk_1` FOREIGN KEY (`proveedor`) REFERENCES `proveedor` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `proveedor`
+-- Dumping data for table `droga`
 --
 
-LOCK TABLES `proveedor` WRITE;
-/*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES (1,'Mohammed','Marruecos'),(2,'Oleh','Rusia'),(3,'Pedro','Espania'),(4,'Dani','Venezuela'),(5,'Pablo','Colombia'),(6,'Otto','Alemania');
-/*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
+LOCK TABLES `droga` WRITE;
+/*!40000 ALTER TABLE `droga` DISABLE KEYS */;
+INSERT INTO `droga` VALUES (1,'Marihuana','THC',0,5,1),(2,'MDMA','Metanfetamina',0,5,6),(3,'Cocaina','Cocaina',0,60,5),(4,'Speed','Metanfetamina',0,20,1),(5,'LSD','LSD',0,15,2),(6,'Trufas','Psilocibina',0,10,2),(7,'Vida','Felicidad',1,0,4),(8,'Tabaco','Nicotina',1,0.16,3),(9,'Alcohol','Etanol',1,4,4);
+/*!40000 ALTER TABLE `droga` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

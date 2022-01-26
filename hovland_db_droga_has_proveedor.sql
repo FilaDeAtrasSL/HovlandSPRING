@@ -18,28 +18,30 @@ USE `hovland_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `proveedor`
+-- Table structure for table `droga_has_proveedor`
 --
 
-DROP TABLE IF EXISTS `proveedor`;
+DROP TABLE IF EXISTS `droga_has_proveedor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `proveedor` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(20) DEFAULT NULL,
-  `localidad` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `droga_has_proveedor` (
+  `droga_id` int NOT NULL,
+  `proveedor_id` int NOT NULL,
+  PRIMARY KEY (`droga_id`,`proveedor_id`),
+  KEY `fk_droga_has_proveedor_proveedor1_idx` (`proveedor_id`),
+  KEY `fk_droga_has_proveedor_droga1_idx` (`droga_id`),
+  CONSTRAINT `fk_droga_has_proveedor_droga1` FOREIGN KEY (`droga_id`) REFERENCES `droga` (`id`),
+  CONSTRAINT `fk_droga_has_proveedor_proveedor1` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedor` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `proveedor`
+-- Dumping data for table `droga_has_proveedor`
 --
 
-LOCK TABLES `proveedor` WRITE;
-/*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES (1,'Mohammed','Marruecos'),(2,'Oleh','Rusia'),(3,'Pedro','Espania'),(4,'Dani','Venezuela'),(5,'Pablo','Colombia'),(6,'Otto','Alemania');
-/*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
+LOCK TABLES `droga_has_proveedor` WRITE;
+/*!40000 ALTER TABLE `droga_has_proveedor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `droga_has_proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -18,28 +18,37 @@ USE `hovland_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `proveedor`
+-- Table structure for table `pedido`
 --
 
-DROP TABLE IF EXISTS `proveedor`;
+DROP TABLE IF EXISTS `pedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `proveedor` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(20) DEFAULT NULL,
-  `localidad` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `pedido` (
+  `id_pedido` int NOT NULL AUTO_INCREMENT,
+  `id_prov` int DEFAULT NULL,
+  `id_cliente` int DEFAULT NULL,
+  `id_droga` int DEFAULT NULL,
+  `cantidad` decimal(10,0) DEFAULT NULL,
+  `precio` decimal(10,0) DEFAULT NULL,
+  PRIMARY KEY (`id_pedido`),
+  KEY `id_prov` (`id_prov`),
+  KEY `id_cliente` (`id_cliente`),
+  KEY `id_droga` (`id_droga`),
+  CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_prov`) REFERENCES `proveedor` (`id`),
+  CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`),
+  CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`id_droga`) REFERENCES `droga` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `proveedor`
+-- Dumping data for table `pedido`
 --
 
-LOCK TABLES `proveedor` WRITE;
-/*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES (1,'Mohammed','Marruecos'),(2,'Oleh','Rusia'),(3,'Pedro','Espania'),(4,'Dani','Venezuela'),(5,'Pablo','Colombia'),(6,'Otto','Alemania');
-/*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
+LOCK TABLES `pedido` WRITE;
+/*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+INSERT INTO `pedido` VALUES (1,3,1,8,30,5);
+/*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
