@@ -69,6 +69,9 @@ public class ClienteController {
 				}
 
 			}
+		
+		return listaClientes;
+		
 	}
 	
 	@GetMapping("/id/{id}")
