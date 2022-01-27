@@ -78,30 +78,6 @@ public class ClienteController {
 
 	}
 	
-/*	@GetMapping
-	public List<Cliente> devolverFiltrado(@RequestParam(value = "nombre", required = false) String nombre ){
-				
-		List<Cliente> listaClientes = this.repository.findAll();
-		
-		if (nombre==null) {
-			return listaClientes;
-		}else {
-			
-			List<Cliente> listaFiltrados = null;
-			
-			for (int i = 0; i < listaClientes.size(); i++) {
-				
-				if (listaClientes.get(i).getNombre().equals(nombre)) {
-					listaFiltrados.add(listaClientes.get(i));
-				}
-				
-			}
-			
-			return listaFiltrados;
-			
-		}
-		
-	}*/
 	
 	@PostMapping
 	@ResponseBody
