@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -23,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  */
 @Entity
 @Table(name = "droga", catalog = "hovland_db")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 public class Droga implements java.io.Serializable {
 
 	private Integer id;
@@ -61,7 +63,7 @@ public class Droga implements java.io.Serializable {
 	}
 
 	
-	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "proveedor")
 	public Proveedor getProveedor() {
@@ -108,6 +110,7 @@ public class Droga implements java.io.Serializable {
 		this.precioGramo = precioGramo;
 	}
 	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "droga")
 	public Set<Pedido> getPedidos() {
 		return this.pedidos;
@@ -117,6 +120,7 @@ public class Droga implements java.io.Serializable {
 		this.pedidos = pedidos;
 	}
 
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "droga_has_proveedor", catalog = "hovland_db", joinColumns = {
 			@JoinColumn(name = "droga_id", nullable = false, updatable = false) }, inverseJoinColumns = {
