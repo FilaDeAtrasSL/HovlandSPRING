@@ -117,7 +117,7 @@ public class ClienteController {
 		
 		System.out.println("Vamos a modificar el cliente con id + " + idCliente);
 		Optional<Cliente> clienteActual = this.repository.findById(idCliente);
-		
+		System.out.println(nuevoCliente);
 		if (!clienteActual.isPresent()) {
 		
 			System.out.println("No existe el cliente con id " + idCliente);

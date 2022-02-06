@@ -98,4 +98,12 @@ public class Cliente implements java.io.Serializable {
 		this.pedidos = pedidos;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", genero=" + genero + ", nacionalidad="
+				+ nacionalidad + ", pedidos=" + pedidos + "]";
+	}
+
+	
+	
 }
