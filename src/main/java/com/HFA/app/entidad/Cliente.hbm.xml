@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 ene 2022 10:11:49 by Hibernate Tools 4.3.5.Final -->
+<!-- Generated 6 feb 2022 13:08:19 by Hibernate Tools 4.3.5.Final -->
 <hibernate-mapping>
-    <class name="Cliente" table="cliente" catalog="hovland_db" optimistic-lock="version">
+    <class name="com.HFA.app.entidad.Cliente" table="cliente" catalog="heroku_5c8a2da75f0eb42" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
@@ -24,7 +24,7 @@
             <key>
                 <column name="id_cliente" />
             </key>
-            <one-to-many class="Pedido" />
+            <one-to-many class="com.HFA.app.entidad.Pedido" />
         </set>
     </class>
 </hibernate-mapping>

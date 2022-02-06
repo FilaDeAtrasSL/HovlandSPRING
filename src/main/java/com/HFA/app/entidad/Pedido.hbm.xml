@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 ene 2022 10:11:49 by Hibernate Tools 4.3.5.Final -->
+<!-- Generated 6 feb 2022 13:08:19 by Hibernate Tools 4.3.5.Final -->
 <hibernate-mapping>
-    <class name="Pedido" table="pedido" catalog="hovland_db" optimistic-lock="version">
+    <class name="com.HFA.app.entidad.Pedido" table="pedido" catalog="heroku_5c8a2da75f0eb42" optimistic-lock="version">
         <id name="idPedido" type="java.lang.Integer">
             <column name="id_pedido" />
             <generator class="identity" />
         </id>
-        <many-to-one name="cliente" class="Cliente" fetch="select">
+        <many-to-one name="cliente" class="com.HFA.app.entidad.Cliente" fetch="select">
             <column name="id_cliente" />
         </many-to-one>
-        <many-to-one name="droga" class="Droga" fetch="select">
+        <many-to-one name="droga" class="com.HFA.app.entidad.Droga" fetch="select">
             <column name="id_droga" />
         </many-to-one>
-        <many-to-one name="proveedor" class="Proveedor" fetch="select">
+        <many-to-one name="proveedor" class="com.HFA.app.entidad.Proveedor" fetch="select">
             <column name="id_prov" />
         </many-to-one>
         <property name="cantidad" type="java.lang.Long">

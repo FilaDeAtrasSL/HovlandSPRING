@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 ene 2022 10:11:49 by Hibernate Tools 4.3.5.Final -->
+<!-- Generated 6 feb 2022 13:08:19 by Hibernate Tools 4.3.5.Final -->
 <hibernate-mapping>
-    <class name="Proveedor" table="proveedor" catalog="hovland_db" optimistic-lock="version">
+    <class name="com.HFA.app.entidad.Proveedor" table="proveedor" catalog="heroku_5c8a2da75f0eb42" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
@@ -18,19 +18,19 @@
             <key>
                 <column name="proveedor" />
             </key>
-            <one-to-many class="Droga" />
+            <one-to-many class="com.HFA.app.entidad.Droga" />
         </set>
         <set name="pedidos" table="pedido" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="id_prov" />
             </key>
-            <one-to-many class="Pedido" />
+            <one-to-many class="com.HFA.app.entidad.Pedido" />
         </set>
         <set name="drogas_1" table="droga_has_proveedor" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="proveedor_id" not-null="true" />
             </key>
-            <many-to-many entity-name="Droga">
+            <many-to-many entity-name="com.HFA.app.entidad.Droga">
                 <column name="droga_id" not-null="true" />
             </many-to-many>
         </set>
