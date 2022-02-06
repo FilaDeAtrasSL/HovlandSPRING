@@ -29,7 +29,7 @@ public class SwaggerConfig {
     
     private ApiInfo apiInfo() {
     	return new ApiInfoBuilder().title("Drogas Hovland API")
-    			.description("La mejor API de drogas de toda la red")
+    			.description("La mejor API de Hovland de toda la red")
     			.termsOfServiceUrl("https://youtu.be/dQw4w9WgXcQ")
     			.license("Hovland License")
     			.licenseUrl("https://youtu.be/-B9JqJFVzGQ").version("1.0").
